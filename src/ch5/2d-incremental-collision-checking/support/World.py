@@ -4,10 +4,18 @@ import numpy as np
 from support.Line import *
 
 class World:
-  def __init__(self):
-    self.half_planes = []
-    # self.
+  '''
+  Abstract idea that a world has rules that can dictate boundries and behaviors.
+  '''
   
+  def __init__(self):
+    self.boundries = [] # the edges of the world, 4 = rectangle like, 3 = triangle like, etc... acts like an obsticle, but everything happens inside of it, or wraps around it
+    self.edge_types = {} # for each edge, starting on polar 0, stores what kind of edge it is, infinite, closed, wrapped, etc...
+    # should edge_types look like {(p1,p2):<val>}? is that efficent?
+    self.obsticles = [] # the points for the obsticles
+    self.robot_index = -1 # is this needed? what if we want more than 1 moving object? is this possible?
+  
+  """
   def create_half_plane(self, p1, p2):
     self.half_planes.append(create_edge(p1, p2))
   
@@ -26,3 +34,4 @@ class World:
       if f != 1:
         return f
     return f
+    """
